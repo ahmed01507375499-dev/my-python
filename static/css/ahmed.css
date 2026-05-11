@@ -1,0 +1,225 @@
+/* المتغيرات الأساسية */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --nav-bg: #e60023;
+    --card-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    --border-color: #ddd;
+    --form-bg: #ffffff;
+}
+
+/* وضع الثيم الليلي */
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --nav-bg: #8b0000;
+    --card-shadow: 0 2px 5px rgba(255,255,255,0.1);
+    --border-color: #444;
+    --form-bg: #2d2d2d;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.3s;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    background-color: var(--nav-bg);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: var(--card-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo { 
+    font-size: 24px; 
+    font-weight: bold; 
+    color: white; 
+}
+
+.nav-controls { 
+    display: flex; 
+    gap: 10px; 
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    background: #efefef;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.btn.red { 
+    background: #e60023; 
+    color: white; 
+    border: none; 
+}
+
+/* زر الثيم */
+#theme-toggle {
+    min-width: 100px;
+}
+
+[data-theme="dark"] #theme-toggle {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* تنسيقات نموذج إنشاء الحساب */
+#login-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.login-container {
+    background-color: var(--form-bg);
+    border: 2px solid #e60023;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-header {
+    background-color: #e60023;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.login-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #e60023;
+    box-shadow: 0 0 5px rgba(230, 0, 35, 0.3);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #219a52;
+    transform: translateY(-2px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* معرض الصور */
+.gallery {
+    column-count: 2;
+    column-gap: 10px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+@media (min-width: 768px) { 
+    .gallery { 
+        column-count: 4; 
+    } 
+}
+
+.card { 
+    margin-bottom: 10px; 
+    border-radius: 12px; 
+    overflow: hidden;
+    break-inside: avoid;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+    background-color: var(--form-bg);
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card img { 
+    width: 100%; 
+    display: block; 
+}

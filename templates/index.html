@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الصور</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">📷 PHOTO ASMN</div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="ابحث عن صور...">
+            <button id="search-btn" class="btn">🔍 بحث</button>
+        </div>
+
+        <div class="nav-controls">
+            <button id="theme-toggle" class="btn">🌙</button>
+            <button id="refresh-btn" class="btn red">تحديث</button>
+            <button id="login-btn" class="btn" onclick="toggleLoginForm()">انشاء حساب</button>
+        </div>
+    </nav>
+
+    <div id="login-form" style="display:none;">
+        <div class="login-container">
+            <div class="login-header">
+                <h3>انشاء حساب جديد</h3>
+                <span class="close-btn" onclick="toggleLoginForm()">✕</span>
+            </div>
+            <div class="login-body">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="name" placeholder="ادخل اسمك">
+                </div>
+                <div class="form-group">
+                    <label>البريد الالكتروني</label>
+                    <input type="email" id="email" placeholder="ادخل ايميلك">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" id="phone" placeholder="ادخل رقم هاتفك">
+                </div>
+                <button class="btn submit-btn" onclick="submitLogin()">انشاء الحساب</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gallery" class="gallery"></div>
+
+    <script src="{{ url_for('static', filename='js/ert.js') }}"></script>
+    <script>
+        function toggleLoginForm() {
+            const form = document.getElementById('login-form');
+            form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+        }
+        
+            async function submitLogin() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            
+            if (!name || !email) {
+                alert('الرجاء ملء الاسم والايميل');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({name: name, email: email, phone: phone})
+                });
+                
+                const result = await response.json();
+                alert(result.message);
+                
+                if (result.success) {
+                    document.getElementById('name').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('phone').value = '';
+                    toggleLoginForm();
+                }
+            } catch (error) {
+                alert('خطأ في الاتصال بالسيرفر');
+            }
+        }
+    </script>
+</body>
+</html>

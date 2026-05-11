@@ -1,0 +1,5 @@
+gallery.db
+__pycach__/
+*.pyc  
+.env
+venv/

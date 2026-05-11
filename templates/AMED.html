@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fruits</title>
+</head>
+<body>
+    <h2>Fruits List</h2>
+    <ul>
+        {% for fruit in fruits %}
+            <li>
+                {{ fruit }} {% if fruit == "Mango" %}(Favorite){% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

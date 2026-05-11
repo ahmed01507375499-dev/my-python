@@ -1,0 +1,248 @@
+:root {
+    --bg: #ffffff;
+    --text: #333333;
+    --nav: #e60023;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+    --border: #ddd;
+}
+
+[data-theme="dark"] {
+    --bg: #1a1a1a;
+    --text: #ffffff;
+    --nav: #8b0000;
+    --shadow: 0 2px 8px rgba(255,255,255,0.1);
+    --border: #444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    transition: all 0.3s;
+}
+
+.navbar {
+    display: flex;
+    background-color: var(--nav);
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.search-container {
+    display: flex;
+    gap: 5px;
+}
+
+#search-input {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    width: 200px;
+    font-size: 14px;
+    transition: width 0.3s;
+}
+
+#search-input:focus {
+    outline: none;
+    width: 260px;
+}
+
+.nav-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.85;
+    transform: scale(1.03);
+}
+
+.btn.red {
+    background: white;
+    color: #e60023;
+}
+
+#theme-toggle {
+    background: #333;
+    color: white;
+    min-width: 45px;
+}
+
+[data-theme="dark"] #theme-toggle {
+    background: #f0f0f0;
+    color: #333;
+}
+
+/* نموذج التسجيل */
+#login-form {
+    max-width: 460px;
+    margin: 20px auto;
+    padding: 0 15px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-container {
+    background: var(--bg);
+    border: 2px solid #e60023;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.login-header {
+    background: #e60023;
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 22px;
+    transition: transform 0.3s;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.login-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--text);
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #e60023;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #27ae60;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.submit-btn:hover {
+    background: #219a52;
+}
+
+/* المعرض */
+.gallery {
+    column-count: 2;
+    column-gap: 12px;
+    padding: 15px;
+}
+
+@media (min-width: 600px) {
+    .gallery { column-count: 3; }
+}
+
+@media (min-width: 900px) {
+    .gallery { column-count: 4; }
+}
+
+.card {
+    margin-bottom: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    break-inside: avoid;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+/* تحسين الجوال */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .search-container {
+        width: 100%;
+    }
+    
+    #search-input {
+        width: 100%;
+    }
+    
+    #search-input:focus {
+        width: 100%;
+    }
+}
